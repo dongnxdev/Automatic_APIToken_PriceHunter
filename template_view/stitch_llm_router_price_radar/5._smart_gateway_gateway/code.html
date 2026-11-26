@@ -1,0 +1,414 @@
+<!DOCTYPE html><html lang="vi"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Smart Gateway (/gateway) — ModelRadar</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'border-subtle': '#E0E1F4',
+        'light-primary': '#0037B0',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1D4ED8',
+        'light-on-primary-container': '#CAD3FF',
+        'light-secondary': '#4D5B94',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#B0BEFE',
+        'light-on-secondary-container': '#3D4C83',
+        'light-tertiary': '#7F2500',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#A73400',
+        'light-on-tertiary-container': '#FFC9B7',
+        'light-error': '#BF0715',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000B',
+        'light-background': '#F8F9FF',
+        'light-on-background': '#0B1C30',
+        'light-surface': '#F8F9FF',
+        'light-surface-dim': '#CBDBF5',
+        'light-surface-bright': '#F8F9FF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#EFF4FF',
+        'light-surface-container': '#E5EEFF',
+        'light-surface-container-high': '#DCE9FF',
+        'light-surface-container-highest': '#D3E4FE',
+        'light-on-surface': '#0B1C30',
+        'light-surface-variant': '#E0E1F4',
+        'light-on-surface-variant': '#434655',
+        'light-outline': '#747686',
+        'light-outline-variant': '#C4C5D7',
+        'light-inverse-surface': '#213145',
+        'light-inverse-on-surface': '#EAF1FF',
+        'light-inverse-primary': '#B7C4FF',
+        'light-success': '#006C4A',
+        'light-on-success': '#FFFFFF',
+        'light-success-container': '#85F8C4',
+        'light-on-success-container': '#002114',
+        'light-warning': '#904D00',
+        'light-on-warning': '#FFFFFF',
+        'light-warning-container': '#FFDCC3',
+        'light-on-warning-container': '#2F1500',
+        'dark-primary': '#B7C4FF',
+        'dark-on-primary': '#002682',
+        'dark-primary-container': '#1D4ED8',
+        'dark-on-primary-container': '#CAD3FF',
+        'dark-secondary': '#B7C4FF',
+        'dark-on-secondary': '#1D2C63',
+        'dark-secondary-container': '#35437B',
+        'dark-on-secondary-container': '#A4B2F1',
+        'dark-tertiary': '#FFB59C',
+        'dark-on-tertiary': '#5C1900',
+        'dark-tertiary-container': '#A73400',
+        'dark-on-tertiary-container': '#FFC9B7',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000B',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#031427',
+        'dark-on-background': '#D3E4FE',
+        'dark-surface': '#031427',
+        'dark-surface-dim': '#031427',
+        'dark-surface-bright': '#2A3A4F',
+        'dark-surface-container-lowest': '#000F21',
+        'dark-surface-container-low': '#0B1C30',
+        'dark-surface-container': '#102034',
+        'dark-surface-container-high': '#1B2B3F',
+        'dark-surface-container-highest': '#26364A',
+        'dark-on-surface': '#D3E4FE',
+        'dark-surface-variant': '#434655',
+        'dark-on-surface-variant': '#C4C5D7',
+        'dark-outline': '#8E90A0',
+        'dark-outline-variant': '#434655',
+        'dark-inverse-surface': '#D3E4FE',
+        'dark-inverse-on-surface': '#213145',
+        'dark-inverse-primary': '#2151DA',
+        'dark-success': '#68DBA9',
+        'dark-on-success': '#003825',
+        'dark-success-container': '#005137',
+        'dark-on-success-container': '#85F8C4',
+        'dark-warning': '#FFB77D',
+        'dark-on-warning': '#4D2600',
+        'dark-warning-container': '#6E3900',
+        'dark-on-warning-container': '#FFDCC3',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Red Hat Text"', 'sans-serif'],
+        'headline': ['"Red Hat Text"', 'sans-serif'],
+        'title': ['"Radio Canada Big"', 'sans-serif'],
+        'body': ['"Radio Canada Big"', 'sans-serif'],
+        'label': ['"Radio Canada Big"', 'sans-serif'],
+        'mono': ['"Fira Code"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '30px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-lg': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['13px', { lineHeight: '19px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['13px', { lineHeight: '18px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.1px', fontWeight: '500' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'mono-lg': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'mono-md': ['12px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '400' }],
+        'mono-sm': ['11px', { lineHeight: '15px', letterSpacing: '0px', fontWeight: '400' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '200ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;family=Radio+Canada+Big:wght@400;500;600;700&amp;family=Red+Hat+Text:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[1024px] flex" data-stitch-vh="min-h-[1024px]===min-h-screen">
+    <!-- Global Left Sidebar -->
+    <aside class="w-64 shrink-0 bg-light-surface-container-lowest border-r border-border-subtle flex flex-col justify-between min-h-[1024px]" data-stitch-vh="min-h-[1024px]===min-h-screen">
+      <div>
+        <div class="h-12 px-4 border-b border-border-subtle flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded bg-light-primary text-light-on-primary flex items-center justify-center">
+              <span class="material-symbols-outlined text-[18px]">radar</span>
+            </span>
+            <span class="font-headline text-title-md text-light-on-surface font-bold tracking-tight">ModelRadar</span>
+          </div>
+          <button type="button" aria-label="Thu gọn sidebar" class="w-7 h-7 rounded flex items-center justify-center text-light-on-surface-variant hover:bg-light-surface-container-low">
+            <span class="material-symbols-outlined text-[18px]">dock_to_right</span>
+          </button>
+        </div>
+
+        <nav aria-label="Điều hướng chính" class="p-3 flex flex-col gap-1">
+          <a href="../price-radar/PriceRadar.html" class="flex items-center justify-between px-3 py-2 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-on-surface transition-colors duration-state-change">
+            <span class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px]">radar</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Price Radar</span>
+            </span>
+          </a>
+          <a href="../model-deep-dive/ModelDeepDive.html" class="flex items-center justify-between px-3 py-2 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-on-surface transition-colors duration-state-change">
+            <span class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px]">query_stats</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Model Deep-Dive</span>
+            </span>
+          </a>
+          <a href="../provider-vault/ProviderVault.html" class="flex items-center justify-between px-3 py-2 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-on-surface transition-colors duration-state-change">
+            <span class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px]">key</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Providers</span>
+            </span>
+            <span data-design-text-token="label-sm" class="shrink-0 font-label text-label-sm px-2 py-0.5 rounded-full bg-light-error-container text-light-on-error-container tabular-nums">2 lỗi</span>
+          </a>
+          <a href="../canonical-mapper/CanonicalMapper.html" class="flex items-center justify-between px-3 py-2 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-on-surface transition-colors duration-state-change">
+            <span class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px]">hub</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Model Mapper</span>
+            </span>
+            <span data-design-text-token="label-sm" class="shrink-0 font-label text-label-sm px-2 py-0.5 rounded-full bg-light-warning-container text-light-on-warning-container tabular-nums">5 chưa map</span>
+          </a>
+          <a href="../smart-gateway/SmartGateway.html" aria-current="page" class="flex items-center justify-between px-3 py-2 rounded bg-light-surface-container-low text-light-primary border border-border-subtle">
+            <span class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px]">alt_route</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Smart Gateway</span>
+            </span>
+          </a>
+          <a href="../ops-console/OpsConsole.html" class="flex items-center justify-between px-3 py-2 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-on-surface transition-colors duration-state-change">
+            <span class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px]">terminal</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Alerts &amp; Ops</span>
+            </span>
+            <span data-design-text-token="label-sm" class="shrink-0 font-label text-label-sm px-2 py-0.5 rounded-full bg-light-surface-container text-light-primary tabular-nums">3 mới</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="p-3 border-t border-border-subtle flex flex-col gap-1.5">
+        <div class="flex items-center justify-between text-light-on-surface-variant">
+          <span data-design-text-token="body-sm" class="font-body text-body-sm">Tỷ giá FX</span>
+          <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-light-on-surface tabular-nums">1 USD = 25.450 đ</span>
+        </div>
+        <div class="flex items-center justify-between text-light-on-surface-variant">
+          <span data-design-text-token="body-sm" class="font-body text-body-sm">Nguồn hoạt động</span>
+          <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-light-success tabular-nums">14 / 16 Online</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Column -->
+    <div class="flex-1 min-w-0 flex flex-col">
+      <!-- Top Global Bar (48px) -->
+      <header class="h-12 bg-light-surface-container-lowest border-b border-border-subtle px-6 flex items-center justify-between sticky top-0 z-20">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-light-success-container text-light-on-success-container">
+              <span class="w-2 h-2 rounded-full bg-light-success"></span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm">AUTO-SCAN ON</span>
+            </span>
+            <span data-design-text-token="mono-md" class="font-mono text-mono-md text-light-on-surface-variant tabular-nums">Chu kỳ: 02:45</span>
+          </div>
+          <button data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" type="button" class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[15px]" aria-hidden="true">sync</span>
+            <span data-design-text-token="label-md" class="font-label text-label-md">FORCE SCAN ALL</span>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-1.5 px-2.5 py-1 rounded border border-border-subtle bg-light-surface-container-lowest">
+            <span data-component-id="badge-dot" data-component-type="badge" data-component-variant="dot" class="w-2 h-2 rounded-full bg-light-success"></span>
+            <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-light-on-surface tabular-nums">LIVE (18ms)</span>
+          </div>
+
+          <div class="inline-flex rounded border border-border-subtle bg-light-surface p-0.5" role="group" aria-label="Tiền tệ hiển thị">
+            <button type="button" class="px-2.5 py-0.5 rounded-sm bg-light-surface-container-lowest text-light-primary border border-border-subtle font-label text-label-sm">VNĐ</button>
+            <button type="button" class="px-2.5 py-0.5 rounded-sm text-light-on-surface-variant font-label text-label-sm hover:text-light-on-surface">USD</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Screen Content: Smart Gateway & Routing Rules (/gateway) -->
+      <main class="p-6 flex flex-col gap-5">
+        <div class="flex flex-wrap items-center justify-between gap-4">
+          <div>
+            <h1 data-design-text-token="headline-lg" class="font-headline text-headline-lg text-light-on-surface">Smart Gateway &amp; Routing Rules</h1>
+            <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">Trạm trung chuyển Reverse Proxy tự động định tuyến request từ Cursor, Cline, Claude Code sang Provider rẻ nhất.</p>
+          </div>
+          <div class="flex items-center gap-2">
+            <code class="px-3 py-1.5 rounded border border-border-subtle bg-light-surface-container-lowest font-mono text-mono-sm text-light-on-surface">https://gw.modelradar.local/v1</code>
+            <button type="button" class="px-3 py-1.5 rounded bg-light-surface-container-lowest border border-border-subtle font-label text-label-md text-light-on-surface hover:bg-light-surface-container-low">Copy Base URL</button>
+          </div>
+        </div>
+
+        <!-- Savings & Consumption Stats -->
+        <div class="grid grid-cols-3 gap-4">
+          <article class="bg-light-surface-container-lowest border border-border-subtle rounded-md p-4">
+            <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant block mb-1">Tiền đã tiết kiệm (Tháng này)</span>
+            <span data-design-text-token="display-lg" class="font-headline text-display-lg text-light-success tabular-nums block">12.480.000 đ</span>
+            <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">So với gọi trực tiếp Anthropic / OpenAI</span>
+          </article>
+          <article class="bg-light-surface-container-lowest border border-border-subtle rounded-md p-4">
+            <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant block mb-1">Tổng Token đã qua Proxy</span>
+            <span data-design-text-token="display-lg" class="font-headline text-display-lg text-light-on-surface tabular-nums block">48,2M</span>
+            <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">99,94% thành công · 18 lần auto-failover</span>
+          </article>
+          <article class="bg-light-surface-container-lowest border border-border-subtle rounded-md p-4">
+            <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant block mb-1">Trần giá an toàn (Circuit Breaker)</span>
+            <span data-design-text-token="display-lg" class="font-headline text-display-lg text-light-primary tabular-nums block">3.000 đ</span>
+            <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-success">Đang bật · Chặn request vượt ngưỡng / 1M</span>
+          </article>
+        </div>
+
+        <div class="grid grid-cols-12 gap-5 items-start">
+          <!-- Left: Routing Policy & Failover Chain -->
+          <section aria-label="Luật định tuyến" class="col-span-6 bg-light-surface-container-lowest border border-border-subtle rounded-md p-5 flex flex-col gap-4">
+            <h2 data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface">Luật Định Tuyến (Routing Policy)</h2>
+
+            <div class="flex flex-col gap-2">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant">Chế độ chọn Provider mặc định</span>
+              <div class="grid grid-cols-3 gap-2">
+                <button type="button" class="p-2.5 rounded border border-border-subtle bg-light-surface text-left hover:border-light-primary">
+                  <span class="font-label text-label-md text-light-on-surface block">Luôn Rẻ Nhất</span>
+                  <span class="font-body text-body-sm text-light-on-surface-variant">Ưu tiên giá thấp nhất</span>
+                </button>
+                <button type="button" class="p-2.5 rounded border-2 border-light-primary bg-light-surface-container-low text-left">
+                  <span class="font-label text-label-md text-light-primary block">Rẻ + Ping &lt; 500ms</span>
+                  <span class="font-body text-body-sm text-light-on-surface-variant">Cân bằng tốc độ &amp; giá</span>
+                </button>
+                <button type="button" class="p-2.5 rounded border border-border-subtle bg-light-surface text-left hover:border-light-primary">
+                  <span class="font-label text-label-md text-light-on-surface block">Ghim Provider</span>
+                  <span class="font-body text-body-sm text-light-on-surface-variant">Cố định 1 nguồn</span>
+                </button>
+              </div>
+            </div>
+
+            <!-- Failover Chain -->
+            <div class="flex flex-col gap-2 pt-2 border-t border-border-subtle">
+              <div class="flex items-center justify-between">
+                <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface">Failover Chain (Nhảy nguồn &lt; 100ms khi dính 429/5xx)</span>
+              </div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <div class="px-3 py-2 rounded border border-light-success bg-light-surface flex items-center gap-2">
+                  <span class="font-mono text-mono-sm font-semibold text-light-success">#1</span>
+                  <span class="font-body text-body-md font-semibold">Ckey.vn</span>
+                </div>
+                <span class="material-symbols-outlined text-[18px] text-light-on-surface-variant">arrow_forward</span>
+                <div class="px-3 py-2 rounded border border-border-subtle bg-light-surface flex items-center gap-2">
+                  <span class="font-mono text-mono-sm text-light-on-surface-variant">#2</span>
+                  <span class="font-body text-body-md font-medium">New-API Pro</span>
+                </div>
+                <span class="material-symbols-outlined text-[18px] text-light-on-surface-variant">arrow_forward</span>
+                <div class="px-3 py-2 rounded border border-border-subtle bg-light-surface flex items-center gap-2">
+                  <span class="font-mono text-mono-sm text-light-on-surface-variant">#3</span>
+                  <span class="font-body text-body-md font-medium">OpenRouter</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- Price Circuit Breaker -->
+            <div class="flex items-center justify-between gap-4 pt-3 border-t border-border-subtle">
+              <div>
+                <span class="font-label text-label-md text-light-on-surface block">Trần giá an toàn (Circuit Breaker Giá)</span>
+                <span class="font-body text-body-sm text-light-on-surface-variant">Tự động chặn nếu giá vọt quá ngưỡng cài đặt</span>
+              </div>
+              <div class="flex items-center gap-2">
+                <input type="text" value="3.000" aria-label="Ngưỡng trần VNĐ" class="w-24 rounded border border-border-subtle bg-light-surface px-2.5 py-1 text-right font-mono text-mono-md tabular-nums">
+                <span class="font-mono text-mono-sm text-light-on-surface-variant">đ / 1M</span>
+              </div>
+            </div>
+          </section>
+
+          <!-- Right: Internal Keys Management -->
+          <section aria-label="Quản lý Internal Keys" class="col-span-6 bg-light-surface-container-lowest border border-border-subtle rounded-md overflow-hidden">
+            <div class="px-4 py-3 border-b border-border-subtle flex items-center justify-between">
+              <h2 data-design-text-token="title-lg" class="font-title text-title-lg text-light-on-surface">Internal Keys (Cursor / Cline / Claude Code)</h2>
+              <button type="button" class="inline-flex items-center gap-1 px-3 py-1 rounded bg-light-primary text-light-on-primary font-label text-label-sm">
+                <span class="material-symbols-outlined text-[15px]">add</span> Tạo Key mới
+              </button>
+            </div>
+            <table class="w-full text-left border-collapse">
+              <thead class="bg-light-surface-container-low border-b border-border-subtle">
+                <tr>
+                  <th scope="col" class="px-4 py-2.5 font-label text-label-md text-light-on-surface-variant">Tên Tool / Key</th>
+                  <th scope="col" class="px-4 py-2.5 font-label text-label-md text-light-on-surface-variant text-right">Đã dùng</th>
+                  <th scope="col" class="px-4 py-2.5 font-label text-label-md text-light-on-surface-variant text-right">Trạng thái</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-border-subtle">
+                <tr>
+                  <td class="px-4 py-3">
+                    <span class="font-body text-body-md font-semibold text-light-on-surface block">Cursor IDE (MacBook)</span>
+                    <span class="font-mono text-mono-sm text-light-on-surface-variant">mr-live-cursor-••••91a2</span>
+                  </td>
+                  <td class="px-4 py-3 text-right font-mono text-mono-sm tabular-nums">28,4M tok</td>
+                  <td class="px-4 py-3 text-right">
+                    <span class="px-2 py-0.5 rounded-full bg-light-success-container text-light-on-success-container font-label text-label-sm">Active</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3">
+                    <span class="font-body text-body-md font-semibold text-light-on-surface block">Claude Code CLI</span>
+                    <span class="font-mono text-mono-sm text-light-on-surface-variant">mr-live-claude-••••44c8</span>
+                  </td>
+                  <td class="px-4 py-3 text-right font-mono text-mono-sm tabular-nums">14,9M tok</td>
+                  <td class="px-4 py-3 text-right">
+                    <span class="px-2 py-0.5 rounded-full bg-light-success-container text-light-on-success-container font-label text-label-sm">Active</span>
+                  </td>
+                </tr>
+                <tr>
+                  <td class="px-4 py-3">
+                    <span class="font-body text-body-md font-semibold text-light-on-surface block">Cline Agent (VSCode)</span>
+                    <span class="font-mono text-mono-sm text-light-on-surface-variant">mr-live-cline-••••77e1</span>
+                  </td>
+                  <td class="px-4 py-3 text-right font-mono text-mono-sm tabular-nums">4,9M tok</td>
+                  <td class="px-4 py-3 text-right">
+                    <span class="px-2 py-0.5 rounded-full bg-light-success-container text-light-on-success-container font-label text-label-sm">Active</span>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </section>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+</body></html>

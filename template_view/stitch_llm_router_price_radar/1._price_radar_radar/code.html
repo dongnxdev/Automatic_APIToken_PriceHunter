@@ -1,0 +1,532 @@
+<!DOCTYPE html><html lang="vi"><head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Price Radar (/radar) — ModelRadar</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">/** @type {import('tailwindcss').Config} */
+globalThis.tailwind = globalThis.tailwind || {};
+globalThis.tailwind.config = {
+  darkMode: 'class',
+  theme: {
+    extend: {
+      colors: {
+        'border-subtle': '#E0E1F4',
+        'light-primary': '#0037B0',
+        'light-on-primary': '#FFFFFF',
+        'light-primary-container': '#1D4ED8',
+        'light-on-primary-container': '#CAD3FF',
+        'light-secondary': '#4D5B94',
+        'light-on-secondary': '#FFFFFF',
+        'light-secondary-container': '#B0BEFE',
+        'light-on-secondary-container': '#3D4C83',
+        'light-tertiary': '#7F2500',
+        'light-on-tertiary': '#FFFFFF',
+        'light-tertiary-container': '#A73400',
+        'light-on-tertiary-container': '#FFC9B7',
+        'light-error': '#BF0715',
+        'light-on-error': '#FFFFFF',
+        'light-error-container': '#FFDAD6',
+        'light-on-error-container': '#93000B',
+        'light-background': '#F8F9FF',
+        'light-on-background': '#0B1C30',
+        'light-surface': '#F8F9FF',
+        'light-surface-dim': '#CBDBF5',
+        'light-surface-bright': '#F8F9FF',
+        'light-surface-container-lowest': '#FFFFFF',
+        'light-surface-container-low': '#EFF4FF',
+        'light-surface-container': '#E5EEFF',
+        'light-surface-container-high': '#DCE9FF',
+        'light-surface-container-highest': '#D3E4FE',
+        'light-on-surface': '#0B1C30',
+        'light-surface-variant': '#E0E1F4',
+        'light-on-surface-variant': '#434655',
+        'light-outline': '#747686',
+        'light-outline-variant': '#C4C5D7',
+        'light-inverse-surface': '#213145',
+        'light-inverse-on-surface': '#EAF1FF',
+        'light-inverse-primary': '#B7C4FF',
+        'light-success': '#006C4A',
+        'light-on-success': '#FFFFFF',
+        'light-success-container': '#85F8C4',
+        'light-on-success-container': '#002114',
+        'light-warning': '#904D00',
+        'light-on-warning': '#FFFFFF',
+        'light-warning-container': '#FFDCC3',
+        'light-on-warning-container': '#2F1500',
+        'dark-primary': '#B7C4FF',
+        'dark-on-primary': '#002682',
+        'dark-primary-container': '#1D4ED8',
+        'dark-on-primary-container': '#CAD3FF',
+        'dark-secondary': '#B7C4FF',
+        'dark-on-secondary': '#1D2C63',
+        'dark-secondary-container': '#35437B',
+        'dark-on-secondary-container': '#A4B2F1',
+        'dark-tertiary': '#FFB59C',
+        'dark-on-tertiary': '#5C1900',
+        'dark-tertiary-container': '#A73400',
+        'dark-on-tertiary-container': '#FFC9B7',
+        'dark-error': '#FFB4AB',
+        'dark-on-error': '#690005',
+        'dark-error-container': '#93000B',
+        'dark-on-error-container': '#FFDAD6',
+        'dark-background': '#031427',
+        'dark-on-background': '#D3E4FE',
+        'dark-surface': '#031427',
+        'dark-surface-dim': '#031427',
+        'dark-surface-bright': '#2A3A4F',
+        'dark-surface-container-lowest': '#000F21',
+        'dark-surface-container-low': '#0B1C30',
+        'dark-surface-container': '#102034',
+        'dark-surface-container-high': '#1B2B3F',
+        'dark-surface-container-highest': '#26364A',
+        'dark-on-surface': '#D3E4FE',
+        'dark-surface-variant': '#434655',
+        'dark-on-surface-variant': '#C4C5D7',
+        'dark-outline': '#8E90A0',
+        'dark-outline-variant': '#434655',
+        'dark-inverse-surface': '#D3E4FE',
+        'dark-inverse-on-surface': '#213145',
+        'dark-inverse-primary': '#2151DA',
+        'dark-success': '#68DBA9',
+        'dark-on-success': '#003825',
+        'dark-success-container': '#005137',
+        'dark-on-success-container': '#85F8C4',
+        'dark-warning': '#FFB77D',
+        'dark-on-warning': '#4D2600',
+        'dark-warning-container': '#6E3900',
+        'dark-on-warning-container': '#FFDCC3',
+      },
+      borderRadius: {
+        'sm': '4px',
+        'DEFAULT': '8px',
+        'md': '12px',
+        'lg': '16px',
+        'full': '9999px',
+      },
+      spacing: {
+        'gutter-xs': '4px',
+        'gutter-sm': '8px',
+        'gutter-md': '12px',
+        'gutter-lg': '16px',
+        'gutter-xl': '24px',
+        'section': '32px',
+        'page-margin': '24px',
+      },
+      fontFamily: {
+        'display': ['"Red Hat Text"', 'sans-serif'],
+        'headline': ['"Red Hat Text"', 'sans-serif'],
+        'title': ['"Radio Canada Big"', 'sans-serif'],
+        'body': ['"Radio Canada Big"', 'sans-serif'],
+        'label': ['"Radio Canada Big"', 'sans-serif'],
+        'mono': ['"Fira Code"', 'monospace'],
+      },
+      fontSize: {
+        'display-lg': ['36px', { lineHeight: '42px', letterSpacing: '-0.5px', fontWeight: '700' }],
+        'display-lg-mobile': ['28px', { lineHeight: '34px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-lg': ['24px', { lineHeight: '30px', letterSpacing: '-0.25px', fontWeight: '700' }],
+        'headline-md': ['20px', { lineHeight: '26px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-lg': ['16px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '600' }],
+        'title-md': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'body-lg': ['15px', { lineHeight: '22px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-md': ['13px', { lineHeight: '19px', letterSpacing: '0px', fontWeight: '400' }],
+        'body-sm': ['12px', { lineHeight: '16px', letterSpacing: '0px', fontWeight: '400' }],
+        'label-lg': ['13px', { lineHeight: '18px', letterSpacing: '0.1px', fontWeight: '600' }],
+        'label-md': ['12px', { lineHeight: '16px', letterSpacing: '0.1px', fontWeight: '500' }],
+        'label-sm': ['11px', { lineHeight: '14px', letterSpacing: '0.2px', fontWeight: '600' }],
+        'mono-lg': ['14px', { lineHeight: '20px', letterSpacing: '0px', fontWeight: '600' }],
+        'mono-md': ['12px', { lineHeight: '18px', letterSpacing: '0px', fontWeight: '400' }],
+        'mono-sm': ['11px', { lineHeight: '15px', letterSpacing: '0px', fontWeight: '400' }],
+      },
+      transitionDuration: {
+        'state-change': '100ms',
+        'surface-enter': '200ms',
+        'surface-exit': '150ms',
+      },
+      transitionDelay: {
+        'state-change': '0ms',
+        'surface-enter': '0ms',
+        'surface-exit': '0ms',
+      },
+      transitionTimingFunction: {
+        'state-change': 'ease-out',
+        'surface-enter': 'cubic-bezier(0.2, 0, 0, 1)',
+        'surface-exit': 'cubic-bezier(0.3, 0, 1, 1)',
+      },
+    },
+  },
+};
+if (typeof module !== 'undefined') module.exports = globalThis.tailwind.config;
+</script>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&amp;family=Radio+Canada+Big:wght@400;500;600;700&amp;family=Red+Hat+Text:wght@500;600;700&amp;display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=block" rel="stylesheet">
+  <style>.material-symbols-outlined { display: inline-block; width: 1em; height: 1em; line-height: 1 !important; box-sizing: content-box; overflow: hidden; white-space: nowrap; direction: ltr; vertical-align: middle; }</style>
+</head>
+<body class="bg-light-surface text-light-on-surface font-body antialiased">
+  <div class="min-h-[1024px] flex" data-stitch-vh="min-h-[1024px]===min-h-screen">
+    <!-- Global Left Sidebar -->
+    <aside class="w-64 shrink-0 bg-light-surface-container-lowest border-r border-border-subtle flex flex-col justify-between min-h-[1024px]" data-stitch-vh="min-h-[1024px]===min-h-screen">
+      <div>
+        <div class="h-12 px-4 border-b border-border-subtle flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded bg-light-primary text-light-on-primary flex items-center justify-center">
+              <span class="material-symbols-outlined text-[18px]">radar</span>
+            </span>
+            <span class="font-headline text-title-md text-light-on-surface font-bold tracking-tight">ModelRadar</span>
+          </div>
+          <button type="button" aria-label="Thu gọn sidebar" class="w-7 h-7 rounded flex items-center justify-center text-light-on-surface-variant hover:bg-light-surface-container-low">
+            <span class="material-symbols-outlined text-[18px]">dock_to_right</span>
+          </button>
+        </div>
+
+        <nav aria-label="Điều hướng chính" class="p-3 flex flex-col gap-1">
+          <a href="../price-radar/PriceRadar.html" aria-current="page" class="flex items-center justify-between px-3 py-2 rounded bg-light-surface-container-low text-light-primary border border-border-subtle">
+            <span class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px]">radar</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Price Radar</span>
+            </span>
+          </a>
+          <a href="../model-deep-dive/ModelDeepDive.html" class="flex items-center justify-between px-3 py-2 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-on-surface transition-colors duration-state-change">
+            <span class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px]">query_stats</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Model Deep-Dive</span>
+            </span>
+          </a>
+          <a href="../provider-vault/ProviderVault.html" class="flex items-center justify-between px-3 py-2 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-on-surface transition-colors duration-state-change">
+            <span class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px]">key</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Providers</span>
+            </span>
+            <span data-design-text-token="label-sm" class="shrink-0 font-label text-label-sm px-2 py-0.5 rounded-full bg-light-error-container text-light-on-error-container tabular-nums">2 lỗi</span>
+          </a>
+          <a href="../canonical-mapper/CanonicalMapper.html" class="flex items-center justify-between px-3 py-2 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-on-surface transition-colors duration-state-change">
+            <span class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px]">hub</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Model Mapper</span>
+            </span>
+            <span data-design-text-token="label-sm" class="shrink-0 font-label text-label-sm px-2 py-0.5 rounded-full bg-light-warning-container text-light-on-warning-container tabular-nums">5 chưa map</span>
+          </a>
+          <a href="../smart-gateway/SmartGateway.html" class="flex items-center justify-between px-3 py-2 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-on-surface transition-colors duration-state-change">
+            <span class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px]">alt_route</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Smart Gateway</span>
+            </span>
+          </a>
+          <a href="../ops-console/OpsConsole.html" class="flex items-center justify-between px-3 py-2 rounded text-light-on-surface-variant hover:bg-light-surface-container-low hover:text-light-on-surface transition-colors duration-state-change">
+            <span class="flex items-center gap-2.5">
+              <span class="material-symbols-outlined text-[18px]">terminal</span>
+              <span data-design-text-token="label-lg" class="font-label text-label-lg">Alerts &amp; Ops</span>
+            </span>
+            <span data-design-text-token="label-sm" class="shrink-0 font-label text-label-sm px-2 py-0.5 rounded-full bg-light-surface-container text-light-primary tabular-nums">3 mới</span>
+          </a>
+        </nav>
+      </div>
+
+      <div class="p-3 border-t border-border-subtle flex flex-col gap-1.5">
+        <div class="flex items-center justify-between text-light-on-surface-variant">
+          <span data-design-text-token="body-sm" class="font-body text-body-sm">Tỷ giá FX</span>
+          <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-light-on-surface tabular-nums">1 USD = 25.450 đ</span>
+        </div>
+        <div class="flex items-center justify-between text-light-on-surface-variant">
+          <span data-design-text-token="body-sm" class="font-body text-body-sm">Nguồn hoạt động</span>
+          <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-light-success tabular-nums">14 / 16 Online</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Column -->
+    <div class="flex-1 min-w-0 flex flex-col">
+      <!-- Top Global Bar (48px) -->
+      <header class="h-12 bg-light-surface-container-lowest border-b border-border-subtle px-6 flex items-center justify-between sticky top-0 z-20">
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-2">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-light-success-container text-light-on-success-container">
+              <span class="w-2 h-2 rounded-full bg-light-success"></span>
+              <span data-design-text-token="label-sm" class="font-label text-label-sm">AUTO-SCAN ON</span>
+            </span>
+            <span data-design-text-token="mono-md" class="font-mono text-mono-md text-light-on-surface-variant tabular-nums">Chu kỳ: 02:45</span>
+          </div>
+          <button data-component-id="button-with-icon" data-component-type="button" data-component-variant="with-icon" type="button" class="inline-flex items-center gap-1.5 px-3 py-1 rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container transition-colors duration-state-change">
+            <span class="material-symbols-outlined text-[15px]" aria-hidden="true">sync</span>
+            <span data-design-text-token="label-md" class="font-label text-label-md">FORCE SCAN ALL</span>
+          </button>
+        </div>
+
+        <div class="flex items-center gap-4">
+          <div class="flex items-center gap-1.5 px-2.5 py-1 rounded border border-border-subtle bg-light-surface-container-lowest">
+            <span data-component-id="badge-dot" data-component-type="badge" data-component-variant="dot" class="w-2 h-2 rounded-full bg-light-success"></span>
+            <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-light-on-surface tabular-nums">LIVE (18ms)</span>
+          </div>
+
+          <div class="inline-flex rounded border border-border-subtle bg-light-surface p-0.5" role="group" aria-label="Tiền tệ hiển thị">
+            <button type="button" class="px-2.5 py-0.5 rounded-sm bg-light-surface-container-lowest text-light-primary border border-border-subtle font-label text-label-sm">VNĐ</button>
+            <button type="button" class="px-2.5 py-0.5 rounded-sm text-light-on-surface-variant font-label text-label-sm hover:text-light-on-surface">USD</button>
+          </div>
+        </div>
+      </header>
+
+      <!-- Screen Content: Price Radar (/radar) -->
+      <main class="p-6 flex flex-col gap-5">
+        <!-- Page Title & Workload Bar -->
+        <div class="flex flex-col gap-3">
+          <div class="flex items-center justify-between gap-4">
+            <div>
+              <h1 data-design-text-token="headline-lg" class="font-headline text-headline-lg text-light-on-surface">Price Radar — Sàn Soi Giá &amp; Săn Kèo</h1>
+              <p data-design-text-token="body-md" class="font-body text-body-md text-light-on-surface-variant">So sánh giá Blended theo thời gian thực giữa 16 Provider đã chuẩn hóa.</p>
+            </div>
+            <span data-design-text-token="mono-sm" class="font-mono text-mono-sm text-light-on-surface-variant tabular-nums">Cập nhật: 18:50:12 · 142 models</span>
+          </div>
+
+          <!-- Workload Bar -->
+          <section aria-label="Bộ lọc Kịch bản" class="bg-light-surface-container-lowest border border-border-subtle rounded-md p-3 flex flex-wrap items-center justify-between gap-3">
+            <div class="flex flex-wrap items-center gap-2">
+              <span data-design-text-token="label-md" class="font-label text-label-md text-light-on-surface-variant mr-1">Kịch bản:</span>
+              <button type="button" class="px-3 py-1.5 rounded bg-light-primary text-light-on-primary font-label text-label-md">Coding / Agent (60% In · 30% Cache · 10% Out)</button>
+              <button type="button" class="px-3 py-1.5 rounded bg-light-surface-container-lowest border border-border-subtle text-light-on-surface-variant hover:text-light-on-surface font-label text-label-md">Chat thường</button>
+              <button type="button" class="px-3 py-1.5 rounded bg-light-surface-container-lowest border border-border-subtle text-light-on-surface-variant hover:text-light-on-surface font-label text-label-md">Dịch thuật</button>
+              <button type="button" class="px-3 py-1.5 rounded bg-light-surface-container-lowest border border-border-subtle text-light-on-surface-variant hover:text-light-on-surface font-label text-label-md">Video / Media</button>
+            </div>
+
+            <div class="flex flex-wrap items-center gap-2">
+              <label class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-light-primary bg-light-surface-container-low text-light-primary cursor-pointer">
+                <input type="checkbox" checked class="rounded-sm border-light-primary text-light-primary focus:ring-0 w-3.5 h-3.5">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm">Có Cache</span>
+              </label>
+              <label class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-light-primary bg-light-surface-container-low text-light-primary cursor-pointer">
+                <input type="checkbox" checked class="rounded-sm border-light-primary text-light-primary focus:ring-0 w-3.5 h-3.5">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm">Path = messages</span>
+              </label>
+              <label class="inline-flex items-center gap-1.5 px-2.5 py-1 rounded border border-border-subtle bg-light-surface-container-lowest text-light-on-surface-variant cursor-pointer">
+                <input type="checkbox" checked class="rounded-sm border-border-subtle text-light-primary focus:ring-0 w-3.5 h-3.5">
+                <span data-design-text-token="label-sm" class="font-label text-label-sm">Context ≥ 200K</span>
+              </label>
+            </div>
+          </section>
+        </div>
+
+        <!-- Split Workspace: Left Model List + Right Top-1 & Matrix -->
+        <div class="grid grid-cols-12 gap-5 items-start">
+          <!-- Left: Model List -->
+          <section aria-label="Danh sách Model" class="col-span-4 bg-light-surface-container-lowest border border-border-subtle rounded-md overflow-hidden">
+            <div class="p-3 border-b border-border-subtle">
+              <div class="relative">
+                <span class="material-symbols-outlined text-[16px] text-light-on-surface-variant absolute left-2.5 top-1/2 -translate-y-1/2">search</span>
+                <input type="text" placeholder="Tìm model chuẩn (VD: claude, gpt)..." class="w-full pl-8 pr-3 py-1.5 rounded border border-border-subtle bg-light-surface text-body-md text-light-on-surface placeholder:text-light-outline focus:border-light-primary focus:ring-0">
+              </div>
+            </div>
+            <div class="divide-y divide-border-subtle">
+              <!-- Active Selected Model -->
+              <button type="button" class="w-full text-left px-3.5 py-3 bg-light-surface-container-low border-l-2 border-light-primary flex items-center justify-between gap-2">
+                <div>
+                  <div class="flex items-center gap-2">
+                    <span data-design-text-token="mono-md" class="font-mono text-mono-md font-semibold text-light-primary">claude-opus-4.6</span>
+                  </div>
+                  <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">8 providers · 200K · Cache OK</p>
+                </div>
+                <div class="text-right">
+                  <span data-design-text-token="mono-md" class="font-mono text-mono-md font-semibold text-light-success tabular-nums block">718 đ</span>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Ckey.vn</span>
+                </div>
+              </button>
+
+              <button type="button" class="w-full text-left px-3.5 py-3 hover:bg-light-surface-container-low flex items-center justify-between gap-2 transition-colors duration-state-change">
+                <div>
+                  <span data-design-text-token="mono-md" class="font-mono text-mono-md font-medium text-light-on-surface block">claude-sonnet-4.5</span>
+                  <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">12 providers · 200K · Cache OK</p>
+                </div>
+                <div class="text-right">
+                  <span data-design-text-token="mono-md" class="font-mono text-mono-md font-semibold text-light-success tabular-nums block">215 đ</span>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">New-API Pro</span>
+                </div>
+              </button>
+
+              <button type="button" class="w-full text-left px-3.5 py-3 hover:bg-light-surface-container-low flex items-center justify-between gap-2 transition-colors duration-state-change">
+                <div>
+                  <span data-design-text-token="mono-md" class="font-mono text-mono-md font-medium text-light-on-surface block">gpt-5.1-codex</span>
+                  <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">9 providers · 400K · Cache OK</p>
+                </div>
+                <div class="text-right">
+                  <span data-design-text-token="mono-md" class="font-mono text-mono-md font-semibold text-light-on-surface tabular-nums block">340 đ</span>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">OpenRouter</span>
+                </div>
+              </button>
+
+              <button type="button" class="w-full text-left px-3.5 py-3 hover:bg-light-surface-container-low flex items-center justify-between gap-2 transition-colors duration-state-change">
+                <div>
+                  <span data-design-text-token="mono-md" class="font-mono text-mono-md font-medium text-light-on-surface block">gemini-2.5-pro</span>
+                  <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">7 providers · 1M · Cache OK</p>
+                </div>
+                <div class="text-right">
+                  <span data-design-text-token="mono-md" class="font-mono text-mono-md font-semibold text-light-on-surface tabular-nums block">188 đ</span>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">SiliconFlow</span>
+                </div>
+              </button>
+
+              <button type="button" class="w-full text-left px-3.5 py-3 hover:bg-light-surface-container-low flex items-center justify-between gap-2 transition-colors duration-state-change">
+                <div>
+                  <span data-design-text-token="mono-md" class="font-mono text-mono-md font-medium text-light-on-surface block">deepseek-r1-0528</span>
+                  <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">11 providers · 128K · Cache OK</p>
+                </div>
+                <div class="text-right">
+                  <span data-design-text-token="mono-md" class="font-mono text-mono-md font-semibold text-light-on-surface tabular-nums block">64 đ</span>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Ckey.vn</span>
+                </div>
+              </button>
+
+              <button type="button" class="w-full text-left px-3.5 py-3 hover:bg-light-surface-container-low flex items-center justify-between gap-2 transition-colors duration-state-change">
+                <div>
+                  <span data-design-text-token="mono-md" class="font-mono text-mono-md font-medium text-light-on-surface block">qwen3-coder-480b</span>
+                  <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">5 providers · 256K · Cache OK</p>
+                </div>
+                <div class="text-right">
+                  <span data-design-text-token="mono-md" class="font-mono text-mono-md font-semibold text-light-on-surface tabular-nums block">48 đ</span>
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant">Together AI</span>
+                </div>
+              </button>
+            </div>
+          </section>
+
+          <!-- Right: Top 1 Throne + Comparison Matrix -->
+          <div class="col-span-8 flex flex-col gap-5">
+            <!-- Ngai Vàng (Top 1 Spotlight Card) -->
+            <article data-component-id="card-elevated" data-component-type="card" data-component-variant="outlined" class="bg-light-surface-container-lowest border border-border-subtle rounded-md p-5 flex flex-col gap-4">
+              <header class="flex flex-wrap items-start justify-between gap-4">
+                <div class="flex flex-col gap-1">
+                  <div class="flex items-center gap-2">
+                    <span data-design-text-token="label-sm" class="font-label text-label-sm px-2.5 py-0.5 rounded-full bg-light-success-container text-light-on-success-container">NGAI VÀNG #1</span>
+                    <span data-design-text-token="mono-md" class="font-mono text-mono-md text-light-on-surface-variant">claude-opus-4.6</span>
+                  </div>
+                  <h2 data-design-text-token="headline-md" class="font-headline text-headline-md text-light-on-surface">Ckey.vn — Rẻ hơn 38% so với giá gốc Anthropic</h2>
+                  <p data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">public_name: <code class="font-mono text-light-on-surface">anthropic/claude-opus-4.6</code> · Path: <code class="font-mono">/v1/messages</code> · Ping: <span class="text-light-success tabular-nums">42ms</span></p>
+                </div>
+                <div class="text-right">
+                  <span data-design-text-token="display-lg" class="font-headline text-display-lg text-light-success tabular-nums block">718 đ</span>
+                  <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">Blended / 1M tokens</span>
+                </div>
+              </header>
+
+              <div class="grid grid-cols-4 gap-3 pt-3 border-t border-border-subtle">
+                <div class="p-2.5 rounded bg-light-surface border border-border-subtle">
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant block">Input / 1M</span>
+                  <span data-design-text-token="mono-lg" class="font-mono text-mono-lg text-light-on-surface tabular-nums">610 đ</span>
+                </div>
+                <div class="p-2.5 rounded bg-light-surface border border-border-subtle">
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant block">Output / 1M</span>
+                  <span data-design-text-token="mono-lg" class="font-mono text-mono-lg text-light-on-surface tabular-nums">3.050 đ</span>
+                </div>
+                <div class="p-2.5 rounded bg-light-surface border border-border-subtle">
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant block">Cache Read / 1M</span>
+                  <span data-design-text-token="mono-lg" class="font-mono text-mono-lg text-light-success tabular-nums">61 đ</span>
+                </div>
+                <div class="p-2.5 rounded bg-light-surface border border-border-subtle">
+                  <span data-design-text-token="label-sm" class="font-label text-label-sm text-light-on-surface-variant block">Max Context</span>
+                  <span data-design-text-token="mono-lg" class="font-mono text-mono-lg text-light-on-surface tabular-nums">200.000</span>
+                </div>
+              </div>
+
+              <footer class="flex flex-wrap items-center justify-between gap-3 pt-2">
+                <div class="flex flex-wrap items-center gap-2">
+                  <button data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-light-surface-container-lowest border border-border-subtle text-light-on-surface hover:bg-light-surface-container-low font-label text-label-md">
+                    <span class="material-symbols-outlined text-[16px]">content_copy</span>
+                    <span data-design-text-token="label-md">Copy public_name</span>
+                  </button>
+                  <button data-component-id="button-secondary" data-component-type="button" data-component-variant="secondary" type="button" class="inline-flex items-center gap-1.5 px-3 py-1.5 rounded bg-light-surface-container-lowest border border-border-subtle text-light-on-surface hover:bg-light-surface-container-low font-label text-label-md">
+                    <span class="material-symbols-outlined text-[16px]">terminal</span>
+                    <span data-design-text-token="label-md">Copy cURL / Env</span>
+                  </button>
+                </div>
+                <a href="../model-deep-dive/ModelDeepDive.html" class="inline-flex items-center gap-1.5 px-3.5 py-1.5 rounded bg-light-primary text-light-on-primary hover:bg-light-primary-container font-label text-label-md">
+                  <span data-design-text-token="label-md">Soi sâu &amp; Test sống (Màn 2)</span>
+                  <span class="material-symbols-outlined text-[16px]">arrow_forward</span>
+                </a>
+              </footer>
+            </article>
+
+            <!-- Comparison Matrix Table -->
+            <div data-component-id="table-standard" data-component-type="table" data-component-variant="standard" class="bg-light-surface-container-lowest border border-border-subtle rounded-md overflow-hidden">
+              <div class="px-4 py-3 border-b border-border-subtle flex items-center justify-between">
+                <h3 data-design-text-token="title-md" class="font-title text-title-md text-light-on-surface">Ma trận So sánh Provider (Rẻ → Đắt)</h3>
+                <span data-design-text-token="body-sm" class="font-body text-body-sm text-light-on-surface-variant">8/8 provider đạt chuẩn bộ lọc</span>
+              </div>
+              <table class="w-full text-left border-collapse">
+                <thead class="bg-light-surface-container-low border-b border-border-subtle">
+                  <tr>
+                    <th scope="col" class="px-4 py-2.5 text-light-on-surface-variant"><span data-design-text-token="label-md" class="font-label text-label-md">Hạng / Provider</span></th>
+                    <th scope="col" class="px-4 py-2.5 text-light-on-surface-variant"><span data-design-text-token="label-md" class="font-label text-label-md">Public Name</span></th>
+                    <th scope="col" class="px-4 py-2.5 text-light-on-surface-variant text-right"><span data-design-text-token="label-md" class="font-label text-label-md">In / Out</span></th>
+                    <th scope="col" class="px-4 py-2.5 text-light-on-surface-variant text-right"><span data-design-text-token="label-md" class="font-label text-label-md">Blended</span></th>
+                    <th scope="col" class="px-4 py-2.5 text-light-on-surface-variant text-right"><span data-design-text-token="label-md" class="font-label text-label-md">Ping</span></th>
+                    <th scope="col" class="px-4 py-2.5 text-light-on-surface-variant text-right"><span data-design-text-token="label-md" class="font-label text-label-md">Test</span></th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-border-subtle">
+                  <tr class="bg-light-surface-container-low">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center gap-2">
+                        <span class="font-mono text-mono-sm font-semibold text-light-success">#1</span>
+                        <span data-design-text-token="body-md" class="font-body text-body-md font-semibold text-light-on-surface">Ckey.vn</span>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 font-mono text-mono-sm text-light-on-surface-variant">anthropic/claude-opus-4.6</td>
+                    <td class="px-4 py-3 text-right font-mono text-mono-sm text-light-on-surface tabular-nums">610 / 3.050</td>
+                    <td class="px-4 py-3 text-right font-mono text-mono-md font-semibold text-light-success tabular-nums">718 đ</td>
+                    <td class="px-4 py-3 text-right font-mono text-mono-sm text-light-success tabular-nums">42ms</td>
+                    <td class="px-4 py-3 text-right">
+                      <a href="../model-deep-dive/ModelDeepDive.html" class="font-label text-label-sm text-light-primary hover:underline">Test</a>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-light-surface-container-low">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center gap-2">
+                        <span class="font-mono text-mono-sm text-light-on-surface-variant">#2</span>
+                        <span data-design-text-token="body-md" class="font-body text-body-md font-medium text-light-on-surface">New-API Pro</span>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 font-mono text-mono-sm text-light-on-surface-variant">claude-opus-4-6</td>
+                    <td class="px-4 py-3 text-right font-mono text-mono-sm text-light-on-surface tabular-nums">740 / 3.700</td>
+                    <td class="px-4 py-3 text-right font-mono text-mono-md font-semibold text-light-on-surface tabular-nums">862 đ</td>
+                    <td class="px-4 py-3 text-right font-mono text-mono-sm text-light-on-surface-variant tabular-nums">68ms</td>
+                    <td class="px-4 py-3 text-right">
+                      <a href="../model-deep-dive/ModelDeepDive.html" class="font-label text-label-sm text-light-primary hover:underline">Test</a>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-light-surface-container-low">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center gap-2">
+                        <span class="font-mono text-mono-sm text-light-on-surface-variant">#3</span>
+                        <span data-design-text-token="body-md" class="font-body text-body-md font-medium text-light-on-surface">OpenRouter</span>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 font-mono text-mono-sm text-light-on-surface-variant">anthropic/claude-opus-4.6</td>
+                    <td class="px-4 py-3 text-right font-mono text-mono-sm text-light-on-surface tabular-nums">950 / 4.750</td>
+                    <td class="px-4 py-3 text-right font-mono text-mono-md font-semibold text-light-on-surface tabular-nums">1.105 đ</td>
+                    <td class="px-4 py-3 text-right font-mono text-mono-sm text-light-on-surface-variant tabular-nums">124ms</td>
+                    <td class="px-4 py-3 text-right">
+                      <a href="../model-deep-dive/ModelDeepDive.html" class="font-label text-label-sm text-light-primary hover:underline">Test</a>
+                    </td>
+                  </tr>
+                  <tr class="hover:bg-light-surface-container-low">
+                    <td class="px-4 py-3">
+                      <div class="flex items-center gap-2">
+                        <span class="font-mono text-mono-sm text-light-on-surface-variant">#4</span>
+                        <span data-design-text-token="body-md" class="font-body text-body-md font-medium text-light-on-surface">Anthropic Direct</span>
+                      </div>
+                    </td>
+                    <td class="px-4 py-3 font-mono text-mono-sm text-light-on-surface-variant">claude-opus-4-6-20260205</td>
+                    <td class="px-4 py-3 text-right font-mono text-mono-sm text-light-on-surface tabular-nums">1.272 / 6.362</td>
+                    <td class="px-4 py-3 text-right font-mono text-mono-md font-semibold text-light-on-surface tabular-nums">1.480 đ</td>
+                    <td class="px-4 py-3 text-right font-mono text-mono-sm text-light-on-surface-variant tabular-nums">158ms</td>
+                    <td class="px-4 py-3 text-right">
+                      <a href="../model-deep-dive/ModelDeepDive.html" class="font-label text-label-sm text-light-primary hover:underline">Test</a>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </main>
+    </div>
+  </div>
+
+
+</body></html>
