@@ -1,1 +1,9 @@
+/target
+/data
+*.db
+*.db-wal
+*.db-shm
+appsettings.json
+docs/api_test.md
 api_test.md
+.master.key

@@ -1,0 +1,23 @@
+[package]
+name = "modelradar-web"
+version.workspace = true
+edition.workspace = true
+license.workspace = true
+
+[lib]
+crate-type = ["cdylib", "rlib"]
+
+[dependencies]
+shared_contract = { workspace = true }
+serde = { workspace = true }
+serde_json = { workspace = true }
+rust_decimal = { workspace = true }
+uuid = { workspace = true }
+chrono = { workspace = true }
+leptos = { version = "0.7", features = ["csr"] }
+leptos_router = { version = "0.7" }
+gloo-net = "0.6"
+web-sys = { version = "0.3", features = ["Window", "Document", "Storage", "WebSocket", "MessageEvent", "CloseEvent"] }
+wasm-bindgen = "0.2"
+console_error_panic_hook = "0.1"
+tracing = { workspace = true }

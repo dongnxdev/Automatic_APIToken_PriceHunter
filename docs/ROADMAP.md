@@ -57,7 +57,7 @@ Phase 7 (Playwright E2E Kiểm Tra Hiển Thị Số Lẻ Thực Tế, Container
   5. Unit Tests kiểm tra tính chính xác các số lẻ Ckey (`411.64448 đ`, `508.95 đ`, `572.0 đ`, `88.37 đ`).
 - **Verify Gate:** `cargo clippy --workspace --all-targets -- -D warnings` và `cargo test -p shared_contract`.
 - **Checklist bàn giao Phase 1:**
-  - [ ] Workspace biên dịch sạch, Migrations TEXT Decimal thành công, Unit Tests exact Decimal pass 100%.
+  - [x] Workspace biên dịch sạch, Migrations TEXT Decimal thành công, Unit Tests exact Decimal pass 100%.
 
 ---
 
@@ -70,7 +70,7 @@ Phase 7 (Playwright E2E Kiểm Tra Hiển Thị Số Lẻ Thực Tế, Container
   4. Integration Tests với `wiremock` phát lại `docs/api_test.json`.
 - **Verify Gate:** `cargo clippy -p modelradar-server --all-targets -- -D warnings` và `cargo test --test crawler_and_vault_integration`.
 - **Checklist bàn giao Phase 2:**
-  - [ ] Auth, Provider Vault, và Crawler parse trọn vẹn 650 models từ `docs/api_test.json` giữ đúng 100% số lẻ thập phân pass tests.
+  - [x] Auth, Provider Vault, và Crawler parse trọn vẹn 650 models từ `docs/api_test.json` giữ đúng 100% số lẻ thập phân pass tests.
 
 ---
 
